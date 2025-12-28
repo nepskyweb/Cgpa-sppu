@@ -1,1 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA to Percentage Calculator</title>
+    <meta name="description" content="Official SPPU CGPA to Percentage Calculator for Pune University. Convert your 10-point CBCS CGPA to percentage using accurate university formulas.">
+    <meta name="keywords" content="SPPU CGPA to Percentage, Pune University Percentage Calculator, SPPU CGPA Formula, CGPA to Percentage SPPU, Pune University Engineering Calculator">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1f2937; line-height: 1.8; }
+        .calc-box { border: 1px solid #e5e7eb; }
+        input[type="number"] { -moz-appearance: textfield; }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+        .logo-box { width: 40px; height: 40px; background: #2563eb; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        summary { list-style: none; outline: none; }
+        summary::-webkit-details-marker { display: none; }
+    </style>
+</head>
+<body class="bg-white">
 
+    <!-- Header Navigation -->
+    <header class="border-b py-4 sticky top-0 bg-white z-50">
+        <div class="max-w-4xl mx-auto px-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Book with Bookmark Logo -->
+                <div class="logo-box">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                        <path d="M10 2v8l3-2 3 2V2" fill="white" stroke="white" stroke-width="1" />
+                    </svg>
+                </div>
+                <div class="leading-tight">
+                    <h1 class="font-black text-lg text-gray-900 tracking-tighter uppercase">SPPU Calculator</h1>
+                    <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Pune University Official Formula</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex gap-6 text-sm font-semibold">
+                <a href="#how-to" class="hover:text-blue-600">How to Use</a>
+                <a href="#notes" class="hover:text-blue-600">Important Notes</a>
+                <a href="#faq" class="hover:text-blue-600">FAQs</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <div style="
+    display:flex;
+    justify-content:center;
+    width:100%;
+    margin:28px 0;
+">
+    <div style="
+        width:360px;
+        padding:14px;
+        border:1px solid #e5e7eb;
+        border-radius:18px;
+        background:#ffffff;
+        box-shadow:0 6px 16px rgba(0,0,0,0.06);
+        display:flex;
+        justify-content:center;
+    ">
+        <script>
+            atOptions = {
+                'key' : '3cdcd2d8761233895e5760119dfb2b00',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script src="https://www.highperformanceformat.com/3cdcd2d8761233895e5760119dfb2b00/invoke.js"></script>
+    </div>
+        </div>
+        <!-- Primary Calculator Tool -->
+        <section class="max-w-md mx-auto bg-gray-50 rounded-3xl p-8 border border-gray-100 shadow-sm mb-12">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-black text-gray-900 mb-2">CGPA Converter</h2>
+                <p class="text-xs text-gray-500 font-medium">Fast & Accurate Results</p>
+            </div>
+
+            <div class="space-y-6">
+                <div>
+                    <label class="block text-center text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Enter Your CGPA</label>
+                    <input type="number" id="cgpa" step="0.01" min="0" max="10" placeholder="e.g. 8.45"
+                        class="w-full text-center text-5xl font-black text-blue-600 bg-transparent border-b-2 border-gray-200 focus:border-blue-600 outline-none pb-2 transition-colors">
+                </div>
+                
+                <button onclick="calculate()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-lg transition-all active:scale-[0.98]">
+                    Calculate Percentage
+                </button>
+
+                <div id="result" class="hidden pt-6 text-center border-t border-gray-200 mt-6">
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">Your Equivalent Percentage</p>
+                    <div id="val" class="text-6xl font-black text-gray-900 mb-2">0%</div>
+                    <p id="eqn" class="text-xs text-blue-600 font-mono font-bold bg-blue-50 px-3 py-1 rounded-full inline-block mb-6"></p>
+                    
+                    <button onclick="whatsapp()" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 text-sm shadow-sm transition-colors">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.675 1.439 5.662 1.439h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        Share with Friends
+                    </button>
+                </div>
+            </div>
+        </section>
+<div style="
+    display:flex;
+    justify-content:center;
+    width:100%;
+    margin:28px 0;
+">
+    <div style="
+        width:360px;
+        padding:14px;
+        border:1px solid #e5e7eb;
+        border-radius:18px;
+        background:#ffffff;
+        box-shadow:0 6px 16px rgba(0,0,0,0.06);
+        display:flex;
+        justify-content:center;
+    ">
+        <script>
+            atOptions = {
+                'key' : '3cdcd2d8761233895e5760119dfb2b00',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script src="https://www.highperformanceformat.com/3cdcd2d8761233895e5760119dfb2b00/invoke.js"></script>
+    </div>
+</div>
+        <!-- Important Notes Section -->
+        <section id="notes" class="mb-12 bg-blue-50 border border-blue-100 p-8 rounded-3xl">
+            <h2 class="text-xl font-black text-blue-900 mb-4 uppercase tracking-tight">Academic Integrity & Important Notes</h2>
+            <div class="space-y-4 text-sm text-blue-800 leading-relaxed">
+                <p><strong>1. Accuracy Guarantee:</strong> This tool utilizes the exact piecewise linear conversion formulas released by Savitribai Phule Pune University (SPPU) for the CBCS pattern (2015 and 2019).</p>
+                <p><strong>2. Transcript Verification:</strong> Always verify your final marks with the printed percentage on the reverse side of your official university transcript. This tool serves as a verified digital assistant.</p>
+                <p><strong>3. Rounding Off:</strong> SPPU norms suggest that the percentage should be used up to two decimal places without manual rounding unless specified by admission portals.</p>
+                <p><strong>4. Applicability:</strong> These formulas are applicable for Engineering, Commerce, Arts, Science, and other departments following the 10-point CGPA scale.</p>
+            </div>
+        </section>
+
+        <!-- High-Volume Content for SEO -->
+        <article class="prose prose-blue max-w-none text-gray-600">
+            <h2 class="text-3xl font-black text-gray-900 mb-6 uppercase tracking-tighter">Understanding the SPPU CGPA to Percentage System</h2>
+            
+            <p class="mb-6">The Savitribai Phule Pune University (SPPU), often referred to as the 'Oxford of the East', implemented the Choice Based Credit System (CBCS) to align with international academic standards. However, the Indian job market, particularly government sectors like UPSC, MPSC, and banking, and technical admissions like GATE or MBA-CET, still require your performance in a percentage format.</p>
+            
+            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">The Official Three-Tier Formula</h3>
+            <p class="mb-4 text-sm">SPPU doesn't use a simple multiplication factor of 9.5 or 10. Instead, it uses a tiered approach to ensure fairness across grade levels:</p>
+            
+            <div class="overflow-x-auto mb-10 border rounded-2xl">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-gray-100 text-gray-900 uppercase font-black text-[10px] tracking-widest">
+                        <tr>
+                            <th class="p-4">CGPA Tier</th>
+                            <th class="p-4">Conversion Equation</th>
+                            <th class="p-4">Target Audience</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y text-gray-700">
+                        <tr>
+                            <td class="p-4 font-bold">9.5 &mdash; 10.0</td>
+                            <td class="p-4 font-mono">(20 &times; CGPA) - 100</td>
+                            <td class="p-4 italic text-xs">High Achievers / Rankers</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold">8.25 &mdash; 9.49</td>
+                            <td class="p-4 font-mono">(12 &times; CGPA) - 25</td>
+                            <td class="p-4 italic text-xs">First Class with Distinction</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-bold">Below 8.25</td>
+                            <td class="p-4 font-mono">CGPA &times; 9.5</td>
+                            <td class="p-4 italic text-xs">Standard Passing Grades</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4" id="how-to">Step-by-Step Conversion Guide</h3>
+            <ol class="list-decimal pl-6 space-y-4 mb-10 text-sm">
+                <li><strong>Locate your CGPA:</strong> Find the 'Cumulative Grade Point Average' mentioned on your final semester marksheet.</li>
+                <li><strong>Identify your Tier:</strong> Determine which range your CGPA falls into (e.g., if it's 8.50, it falls in the middle tier).</li>
+                <li><strong>Apply the Math:</strong> Multiply 8.50 by 12 and then subtract 25. Result = 77%.</li>
+                <li><strong>Verification:</strong> Double-check the math or use our <strong>SPPU CGPA Calculator</strong> for instant error-free results.</li>
+            </ol>
+
+            <h3 class="text-xl font-bold text-gray-900 mt-10 mb-4">Class Awarded Based on CGPA</h3>
+            <div class="grid md:grid-cols-2 gap-4 mb-12">
+                <div class="p-4 border rounded-xl bg-gray-50">
+                    <p class="text-[10px] font-black uppercase text-gray-400">Class with Distinction</p>
+                    <p class="font-bold text-gray-900">CGPA of 7.75 or above</p>
+                </div>
+                <div class="p-4 border rounded-xl bg-gray-50">
+                    <p class="text-[10px] font-black uppercase text-gray-400">First Class</p>
+                    <p class="font-bold text-gray-900">CGPA 6.75 to 7.74</p>
+                </div>
+                <div class="p-4 border rounded-xl bg-gray-50">
+                    <p class="text-[10px] font-black uppercase text-gray-400">Higher Second Class</p>
+                    <p class="font-bold text-gray-900">CGPA 6.25 to 6.74</p>
+                </div>
+                <div class="p-4 border rounded-xl bg-gray-50">
+                    <p class="text-[10px] font-black uppercase text-gray-400">Second Class</p>
+                    <p class="font-bold text-gray-900">CGPA 5.50 to 6.24</p>
+                </div>
+            </div>
+
+            <!-- Massive FAQ Section -->
+            <h2 id="faq" class="text-3xl font-black text-gray-900 mb-8 uppercase tracking-tighter">Everything You Need to Know (FAQs)</h2>
+            <div id="faqList" class="space-y-4 mb-20">
+                <!-- FAQs will be dynamically generated here -->
+            </div>
+
+            <div class="bg-gray-900 text-white p-10 rounded-3xl mb-12">
+                <h4 class="text-xl font-bold mb-4">Advanced Study Tips for SPPU Students</h4>
+                <p class="text-sm opacity-80 mb-6">Focus on maintaining a CGPA above 8.25 to secure a First Class with Distinction. This helps immensely during on-campus placements and when applying for Master's programs abroad.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase">Engineering</span>
+                    <span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase">Management</span>
+                    <span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase">Pharmacy</span>
+                    <span class="px-3 py-1 bg-white/10 rounded-full text-[10px] font-bold uppercase">Arts & Science</span>
+                </div>
+            </div>
+
+            <section class="text-sm space-y-8 mb-20">
+                <h2 class="text-2xl font-bold text-gray-900">Why does SPPU use a Tiered Percentage Formula?</h2>
+                <p>Academic institutions across Maharashtra have diverse grading standards. SPPU recognized that a linear conversion creates inflation at higher grades while undervaluing average performance. By introducing the 8.25 and 9.5 thresholds, the university ensures that a student with a 9.6 CGPA represents a higher tier of mastery.</p>
+                
+                <h3 class="font-bold text-gray-900">The Role of Credits in CGPA</h3>
+                <p>CGPA calculation isn't just about grades; it's about credits. A 4-credit course affects your CGPA much more than a 1-credit lab. If you score an 'O' in a 4-credit subject, your SGPA skyrockets. This calculator helps you see the final result of those cumulative efforts.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer class="bg-gray-50 border-t py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">SPPU CGPA to Percentage Calculator</p>
+            <p class="text-[10px] text-gray-400 leading-relaxed max-w-lg mx-auto">
+                Disclaimer: This application is a utility tool designed based on Savitribai Phule Pune University's official public circulars. We are not officially affiliated with SPPU. Always consult your college administration for legal transcript verification.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function calculate() {
+            const input = document.getElementById('cgpa');
+            const val = parseFloat(input.value);
+            const resultBox = document.getElementById('result');
+            const valBox = document.getElementById('val');
+            const eqnBox = document.getElementById('eqn');
+
+            if (isNaN(val) || val < 0 || val > 10) {
+                return;
+            }
+
+            let percentage = 0;
+            let formula = "";
+
+            if (val >= 9.5) {
+                percentage = (20 * val) - 100;
+                formula = `(20 * ${val}) - 100`;
+            } else if (val >= 8.25) {
+                percentage = (12 * val) - 25;
+                formula = `(12 * ${val}) - 25`;
+            } else {
+                percentage = val * 9.5;
+                formula = `${val} * 9.5`;
+            }
+
+            valBox.innerText = percentage.toFixed(2) + "%";
+            eqnBox.innerText = "Formula: " + formula;
+            resultBox.classList.remove('hidden');
+        }
+
+        function whatsapp() {
+            const val = document.getElementById('val').innerText;
+            const targetUrl = "https://sppu-cgpa-to-percentage.pages.dev/";
+            const text = encodeURIComponent(`I just converted my SPPU CGPA to Percentage: ${val}. Calculate yours accurately here: ${targetUrl}`);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+
+        const faqs = [
+            ["What is the 10-point scale?", "SPPU uses a scale from 0 to 10.0 where 10 represents Outstanding (O) performance."],
+            ["Is this for 2019 pattern?", "Yes, it fully supports the 2015 and 2019 CBCS patterns for Engineering and other courses."],
+            ["Does SPPU provide class?", "Yes, CGPA >= 7.75 is Distinction, 6.75 to 7.74 is First Class."],
+            ["Why use a 12 multiplier?", "The 12 multiplier is specifically designed for the high-performance band of 8.25 to 9.49 CGPA."],
+            ["Is it valid for B.E. Engineering?", "Absolutely. This is the primary formula used for all B.E. (Engineering) results."],
+            ["How do I convert percentage to CGPA?", "There is no official reverse formula. You should always use CGPA as the primary metric."],
+            ["Is 7.5 CGPA good?", "A 7.5 CGPA converts to 71.25%, which is a solid First Class grade."],
+            ["What is SGPA vs CGPA?", "SGPA is for a single semester; CGPA is the aggregate average of all semesters completed."],
+            ["Is this for Arts and Commerce too?", "Yes, any SPPU degree following the 10-point credit system uses this formula."],
+            ["Do different colleges have different formulas?", "No, all colleges affiliated with Pune University use this same centralized formula."],
+            ["Can I use this for M.Tech admissions?", "Yes, GATE and other postgraduate portals accept percentages converted using this official formula."],
+            ["Is it valid for 2024 results?", "Yes, this continues to be the active formula for all current batches."],
+            ["What is the passing CGPA?", "Generally, a minimum of 4.0 CGPA is required to pass, though it varies by course."],
+            ["Is there any rounding?", "University guidelines recommend using two decimal places for the final percentage."],
+            ["Does it apply to external students?", "Yes, if the marksheet shows a CGPA out of 10 under the CBCS pattern."],
+            ["Is 8.25 the same as 74%?", "8.25 CGPA converts exactly to (12*8.25)-25 = 74.00%."],
+            ["Who issued this formula?", "The Academic Council and Examination Department of SPPU via official circulars."],
+            ["Can I use this for old 2012 pattern?", "No, older patterns often used different scales or simple multipliers. Check your transcript back page."],
+            ["What is the highest percentage possible?", "100.00% is achieved with a perfect 10.00 CGPA."],
+            ["Does it matter for jobs?", "Yes, many recruiters have a 60% (roughly 6.32 CGPA) or 65% (6.84 CGPA) cutoff."]
+        ];
+
+        const faqCont = document.getElementById('faqList');
+        faqs.forEach(([q, a]) => {
+            const det = document.createElement('details');
+            det.className = "group border border-gray-100 rounded-2xl bg-white overflow-hidden transition-all hover:border-blue-200";
+            det.innerHTML = `
+                <summary class="flex justify-between items-center p-5 cursor-pointer font-bold text-gray-800 text-sm">
+                    ${q} <span class="text-blue-500 font-mono text-xl transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <div class="px-5 pb-5 text-sm text-gray-500 border-t pt-4 leading-relaxed">${a}</div>
+            `;
+            faqCont.appendChild(det);
+        });
+    </script>
+</body>
+</html>
